@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class Ball : MonoBehaviour
 {
@@ -15,7 +16,16 @@ public class Ball : MonoBehaviour
 		_paddle = FindObjectOfType<Paddle>();
 		_paddleToBallVector = transform.position - _paddle.transform.position;
 	}
-	
+
+	private void OnCollisionEnter2D(Collision2D other)
+	{
+		if (_started)
+		{
+			var boing = GetComponent<AudioSource>();
+			boing.Play();	
+		}
+	}
+
 	// Update is called once per frame
 	void Update ()
 	{

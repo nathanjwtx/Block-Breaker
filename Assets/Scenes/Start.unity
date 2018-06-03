@@ -140,7 +140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dd2a414b0b0c8c42b75dbaef9c6179e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Brick: {fileID: 0}
 --- !u!4 &140100432
 Transform:
   m_ObjectHideFlags: 0
@@ -198,7 +197,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.176
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -906,6 +905,11 @@ Prefab:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 0ded299b058a2454ead7eb335572f7aa, type: 3}
+    - target: {fileID: 82980647617688838, guid: 70f0524d3091f9f409a7356d0d574824,
+        type: 2}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 70f0524d3091f9f409a7356d0d574824, type: 2}
   m_IsPrefabParent: 0

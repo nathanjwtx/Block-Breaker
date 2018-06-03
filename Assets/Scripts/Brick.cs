@@ -9,6 +9,7 @@ public class Brick : MonoBehaviour
 	
 	public LevelManager LevelManager;
 	public Sprite[] HitSprites;
+	public AudioClip Crack;
 
 	private int _timesHits;
 	private bool _breakable;
@@ -27,6 +28,8 @@ public class Brick : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D collision2D)
 	{
+		// Places an audioclip at the position of the brick. Allows for the brick to be destroyed and the sound plays
+		AudioSource.PlayClipAtPoint(Crack, transform.position);
 		if (_breakable)
 		{
 			HandleHits();
