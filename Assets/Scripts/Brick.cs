@@ -5,27 +5,29 @@ using UnityEngine.SceneManagement;
 
 public class Brick : MonoBehaviour
 {
+	public static int BrickCount;
+	
 	public LevelManager LevelManager;
 	public Sprite[] HitSprites;
 
 	private int _timesHits;
+	private bool _breakable;
 	
 	// Use this for initialization
 	void Start ()
 	{
+		_breakable = CompareTag("Breakable");
+		if (_breakable)
+		{
+			BrickCount += 1;
+		}
 		_timesHits = 0;
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-
+		LevelManager = FindObjectOfType<LevelManager>();
 	}
 
 	private void OnCollisionEnter2D(Collision2D collision2D)
 	{
-		var breakable = CompareTag("Breakable");
-		if (breakable)
+		if (_breakable)
 		{
 			HandleHits();
 		}
@@ -38,6 +40,8 @@ public class Brick : MonoBehaviour
 		
 		if (_timesHits >= maxHits)
 		{
+			BrickCount -= 1;
+			LevelManager.BrickDestroyed();
 			Destroy(gameObject);
 		}
 		else
